@@ -1,0 +1,73 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <title>Book Recommender System</title>
+    <meta name="viewport" content="width=device-width, initial-scale=1">
+    <link href="https://cdn.jsdelivr.net/npm/bootstrap@5.3.8/dist/css/bootstrap.min.css" rel="stylesheet" integrity="sha384-sRIl4kxILFvY47J16cr9ZwB07vP4J8+LH7qKQnuqkuIAvNWLzeN8tE5YBujZqJLB" crossorigin="anonymous">
+    <style>
+        .nav-link {
+            color: white !important;
+            transition: 0.3s;
+        }
+
+        .nav-link:hover {
+            color: #d3ffe6 !important;
+            text-decoration: underline;
+        }
+    </style>
+</head>
+<body style="background-color:black">
+  <nav class="navbar navbar-expand-lg" style="background-color:#00a65a;">
+  <div class="container d-flex justify-content-between align-items-center">
+
+    <!-- LEFT SIDE: Brand Name -->
+    <a class="navbar-brand text-white fw-bold" href="#">
+      My Book Recommender
+    </a>
+
+    <!-- RIGHT SIDE: Menu Items -->
+    <ul class="navbar-nav d-flex flex-row gap-4">
+      <li class="nav-item">
+        <a class="nav-link text-white" href="/">Home</a>
+      </li>
+        <li class="nav-item">
+        <a class="nav-link text-white" href="/recommend">Recommend</a>
+      </li>
+      <li class="nav-item">
+        <a class="nav-link text-white" href="/contact">Contact</a>
+      </li>
+
+    </ul>
+
+  </div>
+</nav>
+<div class="container mt-4">
+  <h1 class="text-white mb-4">Top 50 Books</h1>
+
+  <div class="row">
+
+      {% for i in range(book_name|length) %}
+
+    <div class="col-6 col-md-3 mb-4">
+       <div class="text-center">
+         <img
+            src="{{ image[i] }}"
+            style="height: 250px; width: 100%; object-fit: contain; border-radius:12px"
+            class="img-fluid"
+            alt="book cover">
+           <h4 class="text-white">{{ book_name[i] }}</h4>
+           <h4 class="text-white">{{ author[i] }}</h4>
+           <h4 class="text-white">Votes - {{ votes[i] }}</h4>
+           <h4 class="text-white">Rating - {{ rating[i] | round(2) }}</h4>
+
+    </div>
+  </div>
+      {% endfor %}
+
+</div>
+
+
+
+</body>
+</html>
